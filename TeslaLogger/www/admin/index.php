@@ -364,6 +364,7 @@ else
 		$('#BMSMaxChargeRow').hide();
 		$('#BMSMaxDischargeRow').hide();
 		$('#CellImbalanceRow').hide();
+		$('#NominalFullPackRow').hide();
 	}
 
 	function updateSMT(jsonData)
@@ -406,6 +407,16 @@ else
 		else
 		{
 			$('#CellImbalanceRow').hide();
+		}
+
+		if (jsonData["SMTNominalFullPackRow"])
+		{
+			$('#NominalFullPackRow').show();
+			$('#NominalFullPack').text(Math.round(jsonData["SMTNominalFullPackRow"]) +" mV");
+		}
+		else
+		{
+			$('#NominalFullPackRow').hide();
 		}
 
 	}
@@ -506,6 +517,7 @@ function ShowInfo()
 	  <tr id='BMSMaxChargeRow'><td><b><?php t("Max Charge"); ?>:</b></td><td><span id="BMSMaxCharge"></span></td></tr>
 	  <tr id='BMSMaxDischargeRow'><td><b><?php t("Max Discharge"); ?>:</b></td><td><span id="BMSMaxDischarge"></span></td></tr>
 	  <tr id='CellImbalanceRow'><td><b><?php t("Cell Imbalance"); ?>:</b></td><td><span id="CellImbalance"></span></td></tr>
+	  <tr id='NominalFullPackRow'><td><b><?php t("Nominal Full Pack"); ?>:</b></td><td><span id="NominalFullPack"></span></td></tr>
 	  <tr><td><b><?php t("Typical Range"); ?>:</b></td><td><span id="ideal_battery_range_km">---</span> / <span id="battery_level">---</span> %<span id="full_battery_range_km_span"><br>= <span id="full_battery_range_km">---</span> / 100 %</span>
 </td></tr>
 	  <tr><td><b><?php t("Odometer"); ?>:</b></td><td><span id="odometer">---</span></td></tr>
